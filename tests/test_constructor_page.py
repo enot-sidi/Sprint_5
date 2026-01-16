@@ -33,23 +33,35 @@ class TestConstructorPage:
 
         assert driver.current_url == settings.URL + settings.ACCOUNT_PROFILE_PAGE
 
-    # Переход к разделу Булки
+        # Переход к разделу Булки
     def test_go_to_section_rolls(self, driver):
-        driver.find_element(*ConstructorLocators.NAME_BUTTON_SECTION_ROLLS).click()
+        rolls_tab = driver.find_element(*ConstructorLocators.NAME_BUTTON_SECTION_ROLLS)
+        rolls_tab.click()
+    
+        assert "tab_tab_type_current__2BEPc" in rolls_tab.get_attribute("class"), "Таб 'Булки' не стал активным"
+    
         assert WebDriverWait(driver, settings.MAX_WAIT_TIME).until(
-        EC.visibility_of_element_located(ConstructorLocators.SECTION_ROLLS)
-    ).is_displayed(), "Does not scrolling to the Section Rolls"
+            EC.visibility_of_element_located(ConstructorLocators.SECTION_ROLLS)
+        ).is_displayed(), "Контент раздела 'Булки' не отображается"
 
     # Переход к разделу Соусы
     def test_go_to_section_sauces(self, driver):
-        driver.find_element(*ConstructorLocators.NAME_BUTTON_SECTION_SAUCES).click()
+        sauces_tab = driver.find_element(*ConstructorLocators.NAME_BUTTON_SECTION_SAUCES)
+        sauces_tab.click()
+    
+        assert "tab_tab_type_current__2BEPc" in sauces_tab.get_attribute("class"), "Таб 'Соусы' не стал активным"
+    
         assert WebDriverWait(driver, settings.MAX_WAIT_TIME).until(
             EC.visibility_of_element_located(ConstructorLocators.SECTION_SAUCES)
-        ).is_displayed(), "Does not scrolling to the Section sauces"
+        ).is_displayed(), "Контент раздела 'Соусы' не отображается"
 
     # Переход к разделу Начинки
     def test_go_to_section_fillings(self, driver):
-        driver.find_element(*ConstructorLocators.NAME_BUTTON_SECTION_FILLINGS).click()
+        fillings_tab = driver.find_element(*ConstructorLocators.NAME_BUTTON_SECTION_FILLINGS)
+        fillings_tab.click()
+    
+        assert "tab_tab_type_current__2BEPc" in fillings_tab.get_attribute("class"), "Таб 'Начинки' не стал активным"
+    
         assert WebDriverWait(driver, settings.MAX_WAIT_TIME).until(
             EC.visibility_of_element_located(ConstructorLocators.SECTION_FILLINGS)
-        ).is_displayed(), "Does not scrolling to the Section fillings"
+        ).is_displayed(), "Контент раздела 'Начинки' не отображается"
