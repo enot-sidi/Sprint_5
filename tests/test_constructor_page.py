@@ -35,22 +35,21 @@ class TestConstructorPage:
 
     # Переход к разделу Булки
     def test_go_to_section_rolls(self, driver):
-        driver.find_element(*ConstructorLocators.NAME_BUTTON_SECTION_SAUCES).click()
         driver.find_element(*ConstructorLocators.NAME_BUTTON_SECTION_ROLLS).click()
-        section_rolls = WebDriverWait(driver, settings.MAX_WAIT_TIME).until(EC.visibility_of_element_located(
-            ConstructorLocators.SECTION_ROLLS))
-        assert section_rolls.is_displayed(), "Does not scrolling to the Section Rolls"
+        assert WebDriverWait(driver, settings.MAX_WAIT_TIME).until(
+        EC.visibility_of_element_located(ConstructorLocators.SECTION_ROLLS)
+    ).is_displayed(), "Does not scrolling to the Section Rolls"
 
     # Переход к разделу Соусы
     def test_go_to_section_sauces(self, driver):
         driver.find_element(*ConstructorLocators.NAME_BUTTON_SECTION_SAUCES).click()
-        section_sauces = WebDriverWait(driver, settings.MAX_WAIT_TIME).until(EC.visibility_of_element_located(
-            ConstructorLocators.SECTION_SAUCES))
-        assert section_sauces.is_displayed(), "Does not scrolling to the Section sauces"
+        assert WebDriverWait(driver, settings.MAX_WAIT_TIME).until(
+            EC.visibility_of_element_located(ConstructorLocators.SECTION_SAUCES)
+        ).is_displayed(), "Does not scrolling to the Section sauces"
 
     # Переход к разделу Начинки
     def test_go_to_section_fillings(self, driver):
         driver.find_element(*ConstructorLocators.NAME_BUTTON_SECTION_FILLINGS).click()
-        section_fillings = WebDriverWait(driver, settings.MAX_WAIT_TIME).until(EC.visibility_of_element_located(
-            ConstructorLocators.SECTION_FILLINGS))
-        assert section_fillings.is_displayed(), "Does not scrolling to the Section fillings"
+        assert WebDriverWait(driver, settings.MAX_WAIT_TIME).until(
+            EC.visibility_of_element_located(ConstructorLocators.SECTION_FILLINGS)
+        ).is_displayed(), "Does not scrolling to the Section fillings"
